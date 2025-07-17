@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoloBite — Where Café Meets Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&family=Satoshi:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --latte-brown: #C8B6A6;
+            --mocha: #5D4A3C;
+            --cream-vanilla: #FDF6EC;
+            --sage-green: #B8C2A2;
+            --dark-mocha: #3D2E24;
+        }
+        
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-lato { font-family: 'Lato', sans-serif; }
+        .font-satoshi { font-family: 'Satoshi', sans-serif; }
+        
+        /* Custom Colors */
+        .bg-latte { background-color: var(--latte-brown); }
+        .bg-mocha { background-color: var(--mocha); }
+        .bg-cream { background-color: var(--cream-vanilla); }
+        .bg-sage { background-color: var(--sage-green); }
+        .bg-dark-mocha { background-color: var(--dark-mocha); }
+        
+        .text-latte { color: var(--latte-brown); }
+        .text-mocha { color: var(--mocha); }
+        .text-cream { color: var(--cream-vanilla); }
+        .text-sage { color: var(--sage-green); }
+        .text-dark-mocha { color: var(--dark-mocha); }
+        
+        /* Holographic Effects */
+        .holographic {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+            background-size: 400% 400%;
+            animation: holographic-shift 3s ease-in-out infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @keyframes holographic-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .holographic-glow {
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3), 0 0 40px rgba(78, 205, 196, 0.2), 0 0 60px rgba(69, 183, 209, 0.1);
+            animation: glow-pulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow-pulse {
+            from { box-shadow: 0 0 20px rgba(255, 107, 107, 0.3), 0 0 40px rgba(78, 205, 196, 0.2); }
+            to { box-shadow: 0 0 30px rgba(255, 107, 107, 0.5), 0 0 60px rgba(78, 205, 196, 0.3); }
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(2deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
+        }
+        
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* Hover Effects */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(93, 74, 60, 0.15);
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            background: var(--mocha);
+            color: var(--cream-vanilla);
+            border-radius: 50px;
+            padding: 14px 28px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(93, 74, 60, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--dark-mocha);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(93, 74, 60, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--cream-vanilla);
+            color: var(--mocha);
+            border: 2px solid var(--latte-brown);
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--latte-brown);
+            color: var(--cream-vanilla);
+            transform: translateY(-2px);
+        }
+        
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Survey Form Styles */
+        .survey-step {
+            display: none;
+        }
+        
+        .survey-step.active {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        
+        /* Toggle Buttons */
+        .toggle-btn {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .toggle-btn.active {
+            background: var(--mocha);
+            color: var(--cream-vanilla);
+            transform: scale(1.05);
+        }
+        
+        /* Emoji Scale */
+        .emoji-scale {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+        }
+        
+        .emoji-scale:hover,
+        .emoji-scale.active {
+            filter: grayscale(0%);
+            transform: scale(1.2);
+        }
+        
+        /* Holographic Box Animation */
+        .holo-box {
+            position: relative;
+            background: linear-gradient(135deg, var(--dark-mocha) 0%, var(--mocha) 100%);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .holo-screen {
+            background: linear-gradient(45deg, #00f5ff, #0080ff, #8000ff, #ff0080);
+            background-size: 400% 400%;
+            animation: holographic-shift 2s ease-in-out infinite;
+            opacity: 0.9;
+        }
+        
+        .floating-item {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="font-lato bg-cream text-mocha">
+
+    <!-- Hero Section -->
+    <section class="min-h-screen bg-gradient-to-br from-cream via-latte to-sage relative overflow-hidden">
+        <!-- Floating Holographic Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-20 left-10 text-4xl opacity-30 float-animation">🍔</div>
+            <div class="absolute top-40 right-20 text-3xl opacity-25 float-animation" style="animation-delay: 0.5s;">☕</div>
+            <div class="absolute bottom-32 left-20 text-3xl opacity-30 float-animation" style="animation-delay: 1s;">🍰</div>
+            <div class="absolute bottom-20 right-10 text-2xl opacity-25 float-animation" style="animation-delay: 1.5s;">🥐</div>
+        </div>
+        
+        <div class="container mx-auto px-4 py-20 flex items-center min-h-screen">
+            <div class="grid lg:grid-cols-2 gap-12 items-center w-full">
+                
+                <!-- Hero Text -->
+                <div class="text-center lg:text-left reveal">
+                    <div class="mb-6">
+                        <span class="bg-sage text-cream px-4 py-2 rounded-full text-sm font-medium">
+                            ☕ Say Goodbye to Menu Confusion
+                        </span>
+                    </div>
+                    
+                    <h1 class="font-playfair text-5xl md:text-7xl text-mocha mb-6 leading-tight">
+                        <span class="holographic">HoloBite</span><br>
+                        <span class="text-dark-mocha">A Box That Changes</span><br>
+                        <span class="text-dark-mocha">The Way People Order</span>
+                    </h1>
+                    
+                    <p class="font-lato text-xl text-mocha mb-8 leading-relaxed">
+                        India's First Holographic Menu Box.<br>
+                        Turn heads. Serve faster. Sell more.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button onclick="scrollToSection('gallery')" class="btn-primary font-lato text-lg">
+                            🎥 Watch it in Action
+                        </button>
+                        <button onclick="scrollToSection('survey')" class="btn-secondary font-lato text-lg">
+                            💬 Take the 2-min Survey
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Hero Visual - Holographic Display -->
+                <div class="reveal" style="animation-delay: 0.3s;">
+                    <div class="relative max-w-md mx-auto">
+                        <!-- Main HoloBite Box -->
+                        <div class="holo-box w-80 h-52 shadow-2xl hover-lift holographic-glow">
+                            <!-- Holographic Screen -->
+                            <div class="holo-screen absolute inset-4 rounded-xl flex items-center justify-center">
+                                <div class="text-center text-white">
+                                    <div class="text-3xl mb-2 animate-bounce">🍔</div>
+                                    <div class="text-lg font-bold">Cheese Burger</div>
+                                    <div class="text-sm opacity-80">₹180</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating Hologram -->
+                            <div class="floating-item">🍔</div>
+                        </div>
+                        
+                        <!-- Reflection -->
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-80 h-20 bg-gradient-to-b from-mocha to-transparent opacity-20 rounded-2xl" style="transform: translateX(-50%) scaleY(0.5);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-24 bg-mocha">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-playfair text-4xl md:text-5xl text-cream mb-6">
+                    What Café Owners Face Daily
+                </h2>
+                <p class="font-lato text-xl text-latte max-w-2xl mx-auto">
+                    Real problems that slow down your business every single day
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                
+                <!-- Long Queues -->
+                <div class="reveal hover-lift bg-dark-mocha p-8 rounded-3xl text-center" style="animation-delay: 0.1s;">
+                    <div class="text-5xl mb-6">⏳</div>
+                    <h3 class="font-playfair text-2xl text-cream mb-4">Long Queues</h3>
+                    <p class="font-lato text-latte leading-relaxed mb-6">
+                        Customers wait forever while staff explains every menu item
+                    </p>
+                    <div class="bg-latte text-mocha px-4 py-2 rounded-full text-sm inline-block">
+                        Survey: 73% face this daily
+                    </div>
+                </div>
+                
+                <!-- Confused Customers -->
+                <div class="reveal hover-lift bg-dark-mocha p-8 rounded-3xl text-center" style="animation-delay: 0.2s;">
+                    <div class="text-5xl mb-6">😕</div>
+                    <h3 class="font-playfair text-2xl text-cream mb-4">Confused Customers</h3>
+                    <p class="font-lato text-latte leading-relaxed mb-6">
+                        "What does that look like?" - heard this question today?
+                    </p>
+                    <div class="bg-sage text-cream px-4 py-2 rounded-full text-sm inline-block">
+                        Survey: Customers leaving due to confusion
+                    </div>
+                </div>
+                
+                <!-- Staff Dependency -->
+                <div class="reveal hover-lift bg-dark-mocha p-8 rounded-3xl text-center" style="animation-delay: 0.3s;">
+                    <div class="text-5xl mb-6">🙇</div>
+                    <h3 class="font-playfair text-2xl text-cream mb-4">Staff Dependency</h3>
+                    <p class="font-lato text-latte leading-relaxed mb-6">
+                        Too much staff time spent explaining menu items
+                    </p>
+                    <div class="bg-latte text-mocha px-4 py-2 rounded-full text-sm inline-block">
+                        Survey: Waiter explains menu
+                    </div>
+                </div>
+                
+                <!-- Missed Upselling -->
+                <div class="reveal hover-lift bg-dark-mocha p-8 rounded-3xl text-center" style="animation-delay: 0.4s;">
+                    <div class="text-5xl mb-6">💸</div>
+                    <h3 class="font-playfair text-2xl text-cream mb-4">Missed Upselling</h3>
+                    <p class="font-lato text-latte leading-relaxed mb-6">
+                        Customers don't see combos and add-ons visually
+                    </p>
+                    <div class="bg-sage text-cream px-4 py-2 rounded-full text-sm inline-block">
+                        Lost revenue opportunities
+                    </div>
+                </div>
+                
+                <!-- Boring Static Menus -->
+                <div class="reveal hover-lift bg-dark-mocha p-8 rounded-3xl text-center" style="animation-delay: 0.5s;">
+                    <div class="text-5xl mb-6">📃</div>
+                    <h3 class="font-playfair text-2xl text-cream mb-4">Boring Static Menus</h3>
+                    <p class="font-lato text-latte leading-relaxed mb-6">
+                        Printed menus get dirty, QR codes feel impersonal
+                    </p>
+                    <div class="bg-latte text-mocha px-4 py-2 rounded-full text-sm inline-block">
+                        No engagement factor
+                    </div>
+                </div>
+                
+                <!-- No Modern Vibes -->
+                <div class="reveal hover-lift bg-dark-mocha p-8 rounded-3xl text-center" style="animation-delay: 0.6s;">
+                    <div class="text-5xl mb-6">😴</div>
+                    <h3 class="font-playfair text-2xl text-cream mb-4">No Modern Vibes</h3>
+                    <p class="font-lato text-latte leading-relaxed mb-6">
+                        Cafés look the same, nothing makes you memorable
+                    </p>
+                    <div class="bg-sage text-cream px-4 py-2 rounded-full text-sm inline-block">
+                        Blend into the crowd
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-24 bg-cream">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+                
+                <!-- Animated HoloBite Display -->
+                <div class="reveal">
+                    <div class="relative">
+                        <!-- Main HoloBite Unit -->
+                        <div class="holo-box w-full max-w-lg mx-auto aspect-[4/3] shadow-2xl hover-lift holographic-glow">
+                            <!-- Holographic Screen with Rotating Items -->
+                            <div class="holo-screen absolute inset-6 rounded-2xl overflow-hidden">
+                                <div id="rotating-menu" class="w-full h-full relative">
+                                    <!-- Menu Item 1 -->
+                                    <div class="menu-item absolute inset-0 flex flex-col items-center justify-center text-white active">
+                                        <div class="text-4xl mb-3 animate-bounce">🍔</div>
+                                        <div class="text-xl font-bold mb-1">Cheese Burger</div>
+                                        <div class="text-sm opacity-80 mb-2">₹180</div>
+                                        <div class="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Best Seller</div>
+                                    </div>
+                                    
+                                    <!-- Menu Item 2 -->
+                                    <div class="menu-item absolute inset-0 flex flex-col items-center justify-center text-white">
+                                        <div class="text-4xl mb-3 animate-bounce">☕</div>
+                                        <div class="text-xl font-bold mb-1">Cappuccino</div>
+                                        <div class="text-sm opacity-80 mb-2">₹120</div>
+                                        <div class="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Hot Favorite</div>
+                                    </div>
+                                    
+                                    <!-- Menu Item 3 -->
+                                    <div class="menu-item absolute inset-0 flex flex-col items-center justify-center text-white">
+                                        <div class="text-4xl mb-3 animate-bounce">🍰</div>
+                                        <div class="text-xl font-bold mb-1">Chocolate Cake</div>
+                                        <div class="text-sm opacity-80 mb-2">₹150</div>
+                                        <div class="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Chef Special</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating Hologram -->
+                            <div id="floating-hologram" class="floating-item">🍔</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Solution Benefits -->
+                <div class="reveal" style="animation-delay: 0.3s;">
+                    <h2 class="font-playfair text-4xl md:text-5xl text-mocha mb-8">
+                        The Solution – HoloBite
+                    </h2>
+                    
+                    <div class="space-y-8">
+                        <!-- Confusion-Free Ordering -->
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-sage rounded-full flex items-center justify-center text-2xl flex-shrink-0">
+                                🌟
+                            </div>
+                            <div>
+                                <h3 class="font-playfair text-2xl text-mocha mb-2">Confusion-Free Ordering</h3>
+                                <p class="font-lato text-mocha leading-relaxed mb-2">
+                                    Visual-based ordering reduces errors by 40%
+                                </p>
+                                <div class="bg-sage text-cream px-3 py-1 rounded-full text-sm inline-block">
+                                    ✅ See it, want it, order it
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Boost Sales -->
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-latte rounded-full flex items-center justify-center text-2xl flex-shrink-0">
+                                📈
+                            </div>
+                            <div>
+                                <h3 class="font-playfair text-2xl text-mocha mb-2">Boost Sales</h3>
+                                <p class="font-lato text-mocha leading-relaxed mb-2">
+                                    Visual upselling nudges increase combos
+                                </p>
+                                <div class="bg-latte text-mocha px-3 py-1 rounded-full text-sm inline-block">
+                                    ✅ 25% higher average order value
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Modern Vibes -->
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-mocha rounded-full flex items-center justify-center text-2xl flex-shrink-0">
+                                🚀
+                            </div>
+                            <div>
+                                <h3 class="font-playfair text-2xl text-cream mb-2">Modern Vibes</h3>
+                                <p class="font-lato text-mocha leading-relaxed mb-2">
+                                    Futuristic experience = memorable branding
+                                </p>
+                                <div class="bg-mocha text-cream px-3 py-1 rounded-full text-sm inline-block">
+                                    ✅ Instagram-worthy café moments
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-sage rounded-2xl">
+                        <p class="font-playfair text-2xl text-cream text-center italic">
+                            "Turn Heads. Serve Faster. Sell More."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Gallery Section -->
+    <section id="gallery" class="py-24 bg-dark-mocha">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-playfair text-4xl md:text-5xl text-cream mb-6">
+                    Live Gallery
+                </h2>
+                <p class="font-lato text-xl text-latte max-w-2xl mx-auto">
+                    See HoloBite in action across different café setups
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                
+                <!-- Gallery Item 1 -->
+                <div class="reveal hover-lift bg-mocha p-6 rounded-3xl text-center" style="animation-delay: 0.1s;">
+                    <div class="aspect-square bg-gradient-to-br from-latte to-sage rounded-2xl flex items-center justify-center relative mb-6 overflow-hidden">
+                        <!-- HoloBite Box -->
+                        <div class="w-20 h-14 bg-gradient-to-br from-dark-mocha to-mocha rounded-lg relative z-10">
+                            <div class="absolute inset-1 bg-gradient-to-br from-cyan-400 to-purple-600 rounded opacity-80 animate-pulse"></div>
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 text-lg animate-bounce">🍔</div>
+                        </div>
+                        <!-- Background Elements -->
+                        <div class="absolute top-2 left-2 text-xl opacity-60">🍟</div>
+                        <div class="absolute bottom-2 right-2 text-xl opacity-60">🥤</div>
+                    </div>
+                    <h3 class="font-playfair text-xl text-cream mb-2">Realistic Food Visual</h3>
+                    <p class="font-lato text-latte text-sm">
+                        "Live Menu at the Table"
+                    </p>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="reveal hover-lift bg-mocha p-6 rounded-3xl text-center" style="animation-delay: 0.2s;">
+                    <div class="aspect-square bg-gradient-to-br from-sage to-latte rounded-2xl flex items-center justify-center relative mb-6 overflow-hidden">
+                        <!-- Customer Interaction -->
+                        <div class="w-20 h-14 bg-gradient-to-br from-dark-mocha to-mocha rounded-lg relative z-10">
+                            <div class="absolute inset-1 bg-gradient-to-br from-cyan-400 to-purple-600 rounded opacity-80 animate-pulse"></div>
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 text-lg animate-bounce">☕</div>
+                        </div>
+                        <!-- Pointing Hand -->
+                        <div class="absolute top-4 right-4 text-2xl">👆</div>
+                    </div>
+                    <h3 class="font-playfair text-xl text-cream mb-2">Touch-Free Ordering</h3>
+                    <p class="font-lato text-latte text-sm">
+                        "No More 'What Does That Look Like?'"
+                    </p>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="reveal hover-lift bg-mocha p-6 rounded-3xl text-center" style="animation-delay: 0.3s;">
+                    <div class="aspect-square bg-gradient-to-br from-mocha to-dark-mocha rounded-2xl flex items-center justify-center relative mb-6 overflow-hidden">
+                        <!-- Speed Indicator -->
+                        <div class="w-20 h-14 bg-gradient-to-br from-dark-mocha to-mocha rounded-lg relative z-10">
+                            <div class="absolute inset-1 bg-gradient-to-br from-cyan-400 to-purple-600 rounded opacity-80 animate-pulse"></div>
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 text-lg animate-bounce">🍰</div>
+                        </div>
+                        <!-- Speed Lines -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-4xl opacity-30">⚡</div>
+                        </div>
+                    </div>
+                    <h3 class="font-playfair text-xl text-cream mb-2">Increases Order Speed</h3>
+                    <p class="font-lato text-latte text-sm">
+                        "Beautiful, Intuitive, Reliable"
+                    </p>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="reveal hover-lift bg-mocha p-6 rounded-3xl text-center" style="animation-delay: 0.4s;">
+                    <div class="aspect-square bg-gradient-to-br from-latte to-sage rounded-2xl flex items-center justify-center relative mb-6 overflow-hidden">
+                        <!-- Attraction Effect -->
+                        <div class="w-20 h-14 bg-gradient-to-br from-dark-mocha to-mocha rounded-lg relative z-10 holographic-glow">
+                            <div class="absolute inset-1 bg-gradient-to-br from-cyan-400 to-purple-600 rounded opacity-80 animate-pulse"></div>
+                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 text-lg animate-bounce">🥐</div>
+                        </div>
+                        <!-- Eyes -->
+                        <div class="absolute top-2 left-2 text-lg">👀</div>
+                        <div class="absolute bottom-2 right-2 text-lg">👀</div>
+                    </div>
+                    <h3 class="font-playfair text-xl text-cream mb-2">Attracts Curious Walk-ins</h3>
+                    <p class="font-lato text-latte text-sm">
+                        "Stops people in their tracks"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Survey Section -->
+    <section id="survey" class="py-24 bg-latte">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="font-playfair text-4xl md:text-5xl text-mocha mb-6">
+                        📝 Help Us Serve You Better — 2 Minute Survey
+                    </h2>
+                    <p class="font-lato text-xl text-mocha">
+                        Share your café insights and get a free demo invite!
+                    </p>
+                </div>
+                
+                <!-- Survey Form -->
+                <div class="bg-cream p-8 md:p-12 rounded-3xl shadow-2xl reveal" style="animation-delay: 0.2s;">
+                    
+                    <!-- Progress Bar -->
+                    <div class="mb-8">
+                        <div class="flex justify-between text-sm text-mocha mb-2">
+                            <span>Step <span id="current-step">1</span> of 3</span>
+                            <span><span id="progress-percent">33</span>% Complete</span>
+                        </div>
+                        <div class="w-full bg-latte rounded-full h-2">
+                            <div id="progress-bar" class="progress-bar bg-mocha h-2 rounded-full" style="width: 33%"></div>
+                        </div>
+                    </div>
+                    
+                    <form id="survey-form">
+                        
+                        <!-- Step 1: Establishment Info -->
+                        <div class="survey-step active" id="step-1">
+                            <h3 class="font-playfair text-2xl text-mocha mb-8 text-center">About Your Establishment</h3>
+                            
+                            <!-- Business Type -->
+                            <div class="mb-8" id="establishment-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">What type of business do you run?</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="cafe">
+                                        <div class="text-2xl mb-2">☕</div>
+                                        <div class="font-medium">Café</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="qsr">
+                                        <div class="text-2xl mb-2">🍔</div>
+                                        <div class="font-medium">QSR</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="fine-dining">
+                                        <div class="text-2xl mb-2">🍽️</div>
+                                        <div class="font-medium">Fine Dining</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="other">
+                                        <div class="text-2xl mb-2">🏪</div>
+                                        <div class="font-medium">Other</div>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Daily Footfall -->
+                            <div class="mb-8" id="footfall-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">Daily customer footfall?</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="0-50">
+                                        <div class="font-medium">0-50</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="50-100">
+                                        <div class="font-medium">50-100</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="100-200">
+                                        <div class="font-medium">100-200</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="200+">
+                                        <div class="font-medium">200+</div>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Digital Tools -->
+                            <div class="mb-8" id="digital-tools-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">Do you use any digital tools currently?</label>
+                                <div class="grid grid-cols-2 gap-4 mb-4">
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="yes">
+                                        <div class="text-2xl mb-2">✅</div>
+                                        <div class="font-medium">Yes</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="no">
+                                        <div class="text-2xl mb-2">❌</div>
+                                        <div class="font-medium">No</div>
+                                    </button>
+                                </div>
+                                <input type="text" id="digital-tools-input" class="w-full p-4 bg-latte rounded-2xl border-2 border-transparent focus:border-mocha transition-colors hidden" placeholder="Which digital tools do you use?">
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Challenges Faced -->
+                        <div class="survey-step" id="step-2">
+                            <h3 class="font-playfair text-2xl text-mocha mb-8 text-center">Challenges You Face</h3>
+                            
+                            <!-- Billing Challenges -->
+                            <div class="mb-8" id="billing-challenges-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">What billing challenges do you face? (Select all that apply)</label>
+                                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="long-queues">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">⏳</span>
+                                            <span class="font-medium">Long Queues</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="slow-ordering">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">🐌</span>
+                                            <span class="font-medium">Slow Ordering</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="order-errors">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">❌</span>
+                                            <span class="font-medium">Order Errors</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Time to Place Order -->
+                            <div class="grid ..." id="order-time-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">Average time for a customer to place an order?</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="1-2min">
+                                        <div class="text-xl mb-2">⚡</div>
+                                        <div class="font-medium">1-2 min</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="3-5min">
+                                        <div class="text-xl mb-2">⏱️</div>
+                                        <div class="font-medium">3-5 min</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="5-10min">
+                                        <div class="text-xl mb-2">⏳</div>
+                                        <div class="font-medium">5-10 min</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="10min+">
+                                        <div class="text-xl mb-2">🐌</div>
+                                        <div class="font-medium">10+ min</div>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Menu Display Method -->
+                            <div class="grid ..." id="menu-display-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">How do you currently display your menu? (Select all that apply)</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="printed">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">📄</span>
+                                            <span class="font-medium">Printed</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="tv-screen">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">📺</span>
+                                            <span class="font-medium">TV Screen</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="qr-code">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">📱</span>
+                                            <span class="font-medium">QR Code</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="waiter-explains">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">🧑‍🍳</span>
+                                            <span class="font-medium">Waiter Explains</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <!-- Customer Walkaway -->
+                            <div class="flex ..." id="dropoff-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">How often do customers leave due to confusion or long waits?</label>
+                                <div class="flex justify-center space-x-4">
+                                    <button type="button" class="emoji-scale" data-value="never" title="Never">😊</button>
+                                    <button type="button" class="emoji-scale" data-value="rarely" title="Rarely">😐</button>
+                                    <button type="button" class="emoji-scale" data-value="sometimes" title="Sometimes">😕</button>
+                                    <button type="button" class="emoji-scale" data-value="often" title="Often">😡</button>
+                                </div>
+                                <div class="text-center mt-2 text-sm text-mocha">
+                                    <span id="walkaway-label">Select frequency</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Thoughts on HoloBite -->
+                        <div class="survey-step" id="step-3">
+                            <h3 class="font-playfair text-2xl text-mocha mb-8 text-center">Thoughts on HoloBite</h3>
+                            
+                            <!-- Product Helpfulness -->
+                            <div class="mb-8" id="holobite-help-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">Do you think a product like HoloBite would help your business?</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="definitely">
+                                        <div class="text-2xl mb-2">🌟</div>
+                                        <div class="font-medium">Definitely</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="maybe">
+                                        <div class="text-2xl mb-2">🤔</div>
+                                        <div class="font-medium">Maybe</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="not-really">
+                                        <div class="text-2xl mb-2">😐</div>
+                                        <div class="font-medium">Not Really</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="no">
+                                        <div class="text-2xl mb-2">❌</div>
+                                        <div class="font-medium">No</div>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Expected Benefits -->
+                            <div class="mb-8" id="expected-benefits-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">What benefits do you expect? (Select all that apply)</label>
+                                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="faster-ordering">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">⏱️</span>
+                                            <span class="font-medium">Faster Ordering</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="less-staff-need">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">🧠</span>
+                                            <span class="font-medium">Less Staff Need</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="upselling">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">📈</span>
+                                            <span class="font-medium">Upselling</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="modern-feel">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">😍</span>
+                                            <span class="font-medium">Modern Feel</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="customer-engagement">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">💬</span>
+                                            <span class="font-medium">Customer Engagement</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center space-x-3 bg-latte p-4 rounded-2xl cursor-pointer hover-lift">
+                                        <input type="checkbox" class="rounded border-mocha text-mocha" value="other">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl">➕</span>
+                                            <span class="font-medium">Other</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <input type="text" id="other-benefits-input" class="w-full p-4 bg-latte rounded-2xl border-2 border-transparent focus:border-mocha transition-colors mt-4 hidden" placeholder="Please specify other benefits...">
+                            </div>
+                            
+                            <!-- Price Range -->
+                            <div class="mb-8" id="price-range-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">Price range you'd be willing to pay?</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="10k-20k">
+                                        <div class="font-medium">₹10K-20K</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="20k-30k">
+                                        <div class="font-medium">₹20K-30K</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="30k-50k">
+                                        <div class="font-medium">₹30K-50K</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="50k+">
+                                        <div class="font-medium">₹50K+</div>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Demo Interest -->
+                            <div class="mb-8" id="demo-interest-group">
+                                <label class="block font-lato text-lg text-mocha mb-4">Want a demo?</label>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="yes">
+                                        <div class="text-2xl mb-2">✔️</div>
+                                        <div class="font-medium">Yes</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="maybe-later">
+                                        <div class="text-2xl mb-2">🔁</div>
+                                        <div class="font-medium">Maybe Later</div>
+                                    </button>
+                                    <button type="button" class="toggle-btn bg-latte text-mocha p-4 rounded-2xl text-center hover-lift" data-value="no">
+                                        <div class="text-2xl mb-2">❌</div>
+                                        <div class="font-medium">No</div>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Feature Ideas -->
+                            <div class="mb-8" id="suggestions">
+                                <label class="block font-lato text-lg text-mocha mb-4">Any feature ideas or suggestions?</label>
+                                <textarea class="w-full p-4 bg-latte rounded-2xl border-2 border-transparent focus:border-mocha transition-colors resize-none" rows="4" placeholder="Share your thoughts on features you'd love to see..."></textarea>
+                            </div>
+                            
+                            <!-- Contact Info -->
+                            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <label class="block font-lato text-lg text-mocha mb-2">Your Name</label>
+                                    <input type="text" class="w-full p-4 bg-latte rounded-2xl border-2 border-transparent focus:border-mocha transition-colors" placeholder="Your name...">
+                                </div>
+                                <div>
+                                    <label class="block font-lato text-lg text-mocha mb-2">Email</label>
+                                    <input type="email" class="w-full p-4 bg-latte rounded-2xl border-2 border-transparent focus:border-mocha transition-colors" placeholder="your@email.com">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Buttons -->
+                        <div class="flex justify-between items-center mt-8">
+                            <button type="button" id="prev-btn" class="btn-secondary font-lato text-lg hidden">
+                                ← Previous
+                            </button>
+                            <div class="flex-1"></div>
+                            <button type="button" id="next-btn" class="btn-primary font-lato text-lg">
+                                Next →
+                            </button>
+                            <button type="submit" id="submit-btn" class="btn-primary font-lato text-lg hidden">
+                                🟢 Submit Survey
+                            </button>
+                        </div>
+                        <!-- Hidden fields to store selected values for submission -->
+                        <input type="hidden" name="establishment">
+                        <input type="hidden" name="footfall">
+                        <input type="hidden" name="digital_tools">
+                        <input type="hidden" name="billing_challenges">
+                        <input type="hidden" name="order_time">
+                        <input type="hidden" name="menu_display">
+                        <input type="hidden" name="drop_off">
+                        <input type="hidden" name="holobite_help">
+                        <input type="hidden" name="expected_benefits">
+                        <input type="hidden" name="price_range">
+                        <input type="hidden" name="demo_interest">
+                        <input type="hidden" name="suggestions">
+                        <input type="hidden" name="name">
+                        <input type="hidden" name="email">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thank You Section -->
+    <section id="thank-you" class="py-24 bg-sage hidden">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-6xl mb-8">🎉</div>
+                <h2 class="font-playfair text-4xl md:text-5xl text-cream mb-8">
+                    Thank You!
+                </h2>
+                
+                <div class="bg-mocha p-8 md:p-12 rounded-3xl shadow-2xl mb-12">
+                    <p class="font-lato text-2xl text-cream leading-relaxed mb-6">
+                        Your feedback helps us build the future of cafés. 🍽️
+                    </p>
+                    <p class="font-lato text-latte text-lg">
+                        Someone from our team will get in touch soon for your personalized demo.
+                    </p>
+                </div>
+                
+                <div class="space-y-6">
+                    <p class="font-lato text-lg text-mocha">
+                        Follow our café journey
+                    </p>
+                    
+                    <div class="flex justify-center space-x-6">
+                        <a href="#" class="w-12 h-12 bg-mocha rounded-full flex items-center justify-center text-cream hover:bg-dark-mocha transition-colors text-xl">
+                            📷
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-mocha rounded-full flex items-center justify-center text-cream hover:bg-dark-mocha transition-colors text-xl">
+                            📧
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-mocha rounded-full flex items-center justify-center text-cream hover:bg-dark-mocha transition-colors text-xl">
+                            💬
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Team Section -->
+    <section class="py-24 bg-cream">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <div class="mb-12">
+                    <div class="w-32 h-32 bg-gradient-to-br from-latte via-sage to-mocha rounded-full flex items-center justify-center text-4xl mx-auto mb-6 hover-lift">
+                        👨‍💻
+                    </div>
+                    <h2 class="font-playfair text-4xl md:text-5xl text-mocha mb-6">
+                        About the Vision
+                    </h2>
+                </div>
+                
+                <div class="bg-latte p-8 md:p-12 rounded-3xl shadow-2xl">
+                    <blockquote class="font-lato text-xl md:text-2xl text-mocha leading-relaxed mb-8 italic">
+                        "We built HoloBite because cafés deserve more than just menu cards and QR codes. Every café has a story, and we believe technology should help tell it beautifully."
+                    </blockquote>
+                    
+                    <div class="space-y-6 font-lato text-lg text-mocha leading-relaxed">
+                        <p>
+                            After visiting 100+ cafés across India, we noticed the same challenges everywhere: confused customers, long queues, and missed opportunities for engagement.
+                        </p>
+                        
+                        <p>
+                            HoloBite isn't just a display—it's a bridge between your amazing food and your customers' imagination.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <div class="font-playfair text-2xl text-sage">
+                            — The HoloBite Team
+                        </div>
+                        <p class="font-lato text-mocha mt-2">
+                            Built with ☕ and innovation in India
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-dark-mocha">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-4 gap-8 mb-12">
+                    
+                    <!-- Brand -->
+                    <div>
+                        <h3 class="font-playfair text-2xl text-cream mb-4 holographic">HoloBite</h3>
+                        <p class="font-lato text-latte leading-relaxed">
+                            Where Café Meets Future. Revolutionizing the way customers order with holographic displays.
+                        </p>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="font-lato text-lg text-cream mb-4">Quick Links</h4>
+                        <div class="space-y-3">
+                            <a href="#gallery" class="block text-latte hover:text-cream transition-colors">Gallery</a>
+                            <a href="#survey" class="block text-latte hover:text-cream transition-colors">Survey</a>
+                            <button onclick="scrollToSection('gallery')" class="block text-latte hover:text-cream transition-colors text-left">Book a Demo</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact -->
+                    <div>
+                        <h4 class="font-lato text-lg text-cream mb-4">Contact</h4>
+                        <div class="space-y-3 text-latte">
+                            <div>📧 hello@holobite.in</div>
+                            <div>📱 Demo Booking</div>
+                            <div>📍 Made in India</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Legal -->
+                    <div>
+                        <h4 class="font-lato text-lg text-cream mb-4">Legal</h4>
+                        <div class="space-y-3 text-latte text-sm">
+                            <div>Images and designs shown are conceptual and protected.</div>
+                            <div>© 2024 HoloBite. All rights reserved.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-t border-latte border-opacity-30 pt-8 text-center">
+                    <p class="font-lato text-latte">
+                        Built with ☕ and lots of code. From one café lover to another.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // === Smooth Scrolling ===
+  window.scrollToSection = function (sectionId) {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // === Scroll Reveal Animation ===
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // === Menu Rotation Animation ===
+  let currentMenuIndex = 0;
+  const menuItems = document.querySelectorAll('.menu-item');
+  const floatingHologram = document.getElementById('floating-hologram');
+  const menuData = [
+    { emoji: '🍔', name: 'Cheese Burger' },
+    { emoji: '☕', name: 'Cappuccino' },
+    { emoji: '🍰', name: 'Chocolate Cake' }
+  ];
+
+  function rotateMenu() {
+    menuItems.forEach(item => item.classList.remove('active'));
+    menuItems[currentMenuIndex].classList.add('active');
+    if (floatingHologram) {
+      floatingHologram.textContent = menuData[currentMenuIndex].emoji;
+    }
+    currentMenuIndex = (currentMenuIndex + 1) % menuItems.length;
+  }
+
+  if (menuItems.length > 0) {
+    setInterval(rotateMenu, 3000);
+  }
+
+  // === Survey Logic ===
+  let currentStep = 1;
+  const totalSteps = 3;
+
+  function updateProgress() {
+    const percent = (currentStep / totalSteps) * 100;
+    document.getElementById('current-step').textContent = currentStep;
+    document.getElementById('progress-percent').textContent = Math.round(percent);
+    document.getElementById('progress-bar').style.width = percent + '%';
+  }
+
+  function showStep(step) {
+    document.querySelectorAll('.survey-step').forEach(s => s.classList.remove('active'));
+    document.getElementById(`step-${step}`).classList.add('active');
+    document.getElementById('prev-btn').classList.toggle('hidden', step === 1);
+    document.getElementById('next-btn').classList.toggle('hidden', step === totalSteps);
+    document.getElementById('submit-btn').classList.toggle('hidden', step !== totalSteps);
+    updateProgress();
+  }
+
+  showStep(currentStep);
+
+  document.getElementById('next-btn').addEventListener('click', () => {
+    if (currentStep < totalSteps) {
+      currentStep++;
+      showStep(currentStep);
+    }
+  });
+
+  document.getElementById('prev-btn').addEventListener('click', () => {
+    if (currentStep > 1) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  });
+
+  // === Utility Functions ===
+  function getActiveValue(container) {
+    if (!container) return "";
+    const btn = container.querySelector(".toggle-btn.active");
+    return btn ? btn.dataset.value : "";
+  }
+
+  function getCheckedValues(groupId) {
+    const group = document.getElementById(groupId);
+    if (!group) return "";
+    return Array.from(group.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value).join(", ");
+  }
+
+  function getActiveEmojiValue() {
+    const emoji = document.querySelector('.emoji-scale.active');
+    return emoji ? emoji.dataset.value : '';
+  }
+
+  // === Toggle Button Handling ===
+  document.querySelectorAll('.toggle-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const group = button.parentElement;
+      group.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
+
+  // === Emoji Scale Handling ===
+  document.querySelectorAll('.emoji-scale').forEach(emoji => {
+    emoji.addEventListener('click', () => {
+      const parent = emoji.parentElement;
+      parent.querySelectorAll('.emoji-scale').forEach(e => e.classList.remove('active'));
+      emoji.classList.add('active');
+      const labelMap = {
+        'never': 'Never',
+        'rarely': 'Rarely',
+        'sometimes': 'Sometimes',
+        'often': 'Often'
+      };
+      document.getElementById('walkaway-label').textContent = labelMap[emoji.dataset.value] || '';
+    });
+  });
+
+  // === Checkbox Handling (for dynamic 'other' input) ===
+  document.querySelectorAll('input[type="checkbox"]').forEach(box => {
+    box.addEventListener('change', () => {
+      const otherBox = document.querySelector('input[value="other"]');
+      const otherInput = document.getElementById('other-benefits-input');
+      if (otherBox?.checked) {
+        otherInput?.classList.remove('hidden');
+      } else {
+        otherInput?.classList.add('hidden');
+      }
+    });
+  });
+
+  // === Submit Handler ===
+  document.getElementById('survey-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = {
+      establishment: getActiveValue(document.getElementById("establishment-group")),
+      footfall: getActiveValue(document.getElementById("footfall-group")),
+      digital_tools: getActiveValue(document.getElementById("digital-tools-group")),
+      billing_challenges: getCheckedValues("billing-challenges-group"),
+      order_time: getActiveValue(document.getElementById("order-time-group")),
+      menu_display: getCheckedValues("menu-display-group"),
+      drop_off: getActiveEmojiValue(),
+      holobite_help: getActiveValue(document.getElementById("holobite-group")),
+      expected_benefits: (() => {
+        const base = getCheckedValues("benefits-group");
+        const other = document.getElementById("other-benefits-input")?.value || "";
+        return base + (other ? `, ${other}` : "");
+      })(),
+      price_range: getActiveValue(document.getElementById("price-group")),
+      demo_interest: getActiveValue(document.getElementById("demo-group")),
+      suggestions: document.getElementById("suggestions")?.value || '',
+      name: document.getElementById("name")?.value || '',
+      email: document.getElementById("email")?.value || ''
+    };
+
+    fetch("https://script.google.com/macros/s/AKfycbw-wW-MXAAWjkLr0Q72CHF93ohAyJqqKMgSSioU95SAEHDfxGmsuNMortZxyo-vEOVr/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(() => {
+      document.getElementById('survey').style.display = 'none';
+      document.body.insertAdjacentHTML('beforeend', `
+        <div id="thank-you" class="py-24 text-center font-playfair text-3xl text-mocha">
+          🎉 Thank you for your response!
+        </div>`);
+      document.getElementById('thank-you').scrollIntoView({ behavior: 'smooth' });
+    })
+    .catch(err => {
+      alert("Error submitting form. Please try again later.");
+      console.error(err);
+    });
+  });
+});
+</script>
+</body>
+</html>
